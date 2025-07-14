@@ -1,14 +1,14 @@
-package stellarBurgers;
+package stellarburgers;
 
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Test;
-import stellarBurgers.pojo.UpdateUser;
-import stellarBurgers.pojo.User;
-import stellarBurgers.testDataGenerator.GetUpdateUserData;
-import stellarBurgers.testDataGenerator.GetUserData;
-import stellarBurgers.testSteps.Steps;
+import stellarburgers.pojo.UpdateUser;
+import stellarburgers.pojo.User;
+import stellarburgers.testdatagenerator.GetUpdateUserData;
+import stellarburgers.testdatagenerator.GetUserData;
+import stellarburgers.teststeps.Steps;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 

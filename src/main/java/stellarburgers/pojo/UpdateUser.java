@@ -1,5 +1,8 @@
-package stellarBurgers.pojo;
+package stellarburgers.pojo;
 
+import lombok.Getter;
+
+@Getter
 public class UpdateUser {
 
     private final String email;
@@ -8,13 +11,5 @@ public class UpdateUser {
     public UpdateUser(String email, String name) {
         this.email = email;
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getName() {
-        return name;
     }
 }

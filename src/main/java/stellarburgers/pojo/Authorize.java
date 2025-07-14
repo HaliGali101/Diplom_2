@@ -1,5 +1,7 @@
-package stellarBurgers.pojo;
+package stellarburgers.pojo;
+import lombok.Getter;
 
+@Getter
 public class Authorize {
 
     private final String email;
@@ -8,14 +10,6 @@ public class Authorize {
     public Authorize(String email, String password) {
         this.email = email;
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
 }

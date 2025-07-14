@@ -1,13 +1,13 @@
-package stellarBurgers.testSteps;
+package stellarburgers.teststeps;
 
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
-import stellarBurgers.Methods;
-import stellarBurgers.pojo.Authorize;
-import stellarBurgers.pojo.Order;
-import stellarBurgers.pojo.UpdateUser;
-import stellarBurgers.pojo.User;
-import stellarBurgers.pojo.ingredientsList.IngredientData;
+import stellarburgers.Methods;
+import stellarburgers.pojo.Authorize;
+import stellarburgers.pojo.Order;
+import stellarburgers.pojo.UpdateUser;
+import stellarburgers.pojo.User;
+import stellarburgers.pojo.ingredientslist.IngredientData;
 
 import java.util.ArrayList;
 import java.util.Collections;

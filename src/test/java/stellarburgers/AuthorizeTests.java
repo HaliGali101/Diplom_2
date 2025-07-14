@@ -1,12 +1,12 @@
-package stellarBurgers;
+package stellarburgers;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import stellarBurgers.pojo.User;
-import stellarBurgers.testDataGenerator.GetUserData;
-import stellarBurgers.testSteps.Steps;
+import stellarburgers.pojo.User;
+import stellarburgers.testdatagenerator.GetUserData;
+import stellarburgers.teststeps.Steps;
 
 import static org.hamcrest.CoreMatchers.*;
 

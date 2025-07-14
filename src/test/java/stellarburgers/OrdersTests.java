@@ -1,12 +1,13 @@
-package stellarBurgers;
+package stellarburgers;
 
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import stellarBurgers.pojo.User;
-import stellarBurgers.pojo.ingredientsList.IngredientData;
-import stellarBurgers.testDataGenerator.GetUserData;
-import stellarBurgers.testSteps.Steps;
+import stellarburgers.pojo.User;
+import stellarburgers.pojo.ingredientslist.IngredientData;
+import stellarburgers.testdatagenerator.GetUserData;
+import stellarburgers.teststeps.Steps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,8 @@ import static org.hamcrest.Matchers.emptyString;
 public class OrdersTests extends SetUp {
 
     private List<IngredientData> ingredientListTestData;
+    private User user;
+    private boolean isUser;
 
     @Before
     public void getIngredientListForTest() {
@@ -27,7 +30,8 @@ public class OrdersTests extends SetUp {
     @Test
     @DisplayName("Создание заказа с авторизацией")
     public void createOrderWithAuthorize() {
-        User user = GetUserData.getUser("userAllData");
+        isUser = true;
+        user = GetUserData.getUser("userAllData");
         String token = Methods.postCreateUser(user)
                 .statusCode(200)
                 .extract().path("accessToken").toString();
@@ -46,6 +50,7 @@ public class OrdersTests extends SetUp {
     @Test
     @DisplayName("Создание заказа без авторизации")
     public void createOrderWithoutAuthorize() {
+        isUser = false;
         List<String> idsList  = Steps.getIngredientsIds(ingredientListTestData);
 
         Steps.createOrder(idsList,"")
@@ -60,6 +65,7 @@ public class OrdersTests extends SetUp {
     @Test
     @DisplayName("Создание заказа без ингредиентов")
     public void createOrderWithoutIngredients() {
+        isUser = false;
         List<String> ingredientListTestData = new ArrayList<>();
         Steps.createOrder(ingredientListTestData,"")
                 .statusCode(400)
@@ -71,11 +77,20 @@ public class OrdersTests extends SetUp {
     @Test
     @DisplayName("Создание заказа с неверным хешем ингредиентов")
     public void createOrderInvalidateIngredientsHash() {
+        isUser = false;
         List<String> idsList  = Steps.getIngredientsIds(ingredientListTestData);
         idsList.add(String.valueOf(new Random().nextInt(10)));
 
         Steps.createOrder(idsList,"")
                 .statusCode(500);
+    }
+
+    @After
+    public void cleanUp() {
+        if(isUser) {
+            Steps.deleteTestUser(user)
+                    .statusCode(202);
+        }
     }
 
 }

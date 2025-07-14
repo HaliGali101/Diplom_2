@@ -1,12 +1,13 @@
-package stellarBurgers;
+package stellarburgers;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import stellarBurgers.pojo.User;
-import stellarBurgers.testDataGenerator.GetUserData;
-import stellarBurgers.testSteps.Steps;
+import stellarburgers.pojo.User;
+import stellarburgers.testdatagenerator.GetUserData;
+import stellarburgers.teststeps.Steps;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class GetUserOrdersTests extends SetUp{
     }
 
     @Test
+    @DisplayName("Получить заказ авторизованного пользователя")
     public void getUserOrdersWithAuthorizationOneOrder() {
 
         ValidatableResponse createOrder1 = Steps.createOrder(ingredientsIds, token);
@@ -45,6 +47,7 @@ public class GetUserOrdersTests extends SetUp{
     }
 
     @Test
+    @DisplayName("Получить заказы авторизованного пользователя")
     public void getUserOrdersWithAuthorizationTwoOrders() {
 
         ValidatableResponse createOrder1 = Steps.createOrder(ingredientsIds, token);
@@ -63,6 +66,7 @@ public class GetUserOrdersTests extends SetUp{
     }
 
     @Test
+    @DisplayName("Получить заказы неавторизованного пользователя")
     public void getUserOrdersWithoutAuthorization() {
 
         Steps.createOrder(ingredientsIds, token);

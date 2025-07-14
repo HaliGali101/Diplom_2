@@ -1,7 +1,7 @@
-package stellarBurgers.testDataGenerator;
+package stellarburgers.testdatagenerator;
 
 import com.github.javafaker.Faker;
-import stellarBurgers.pojo.UpdateUser;
+import stellarburgers.pojo.UpdateUser;
 
 public class GetUpdateUserData {
 

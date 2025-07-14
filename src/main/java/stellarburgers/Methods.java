@@ -1,22 +1,22 @@
-package stellarBurgers;
+package stellarburgers;
 
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
-import stellarBurgers.pojo.Authorize;
-import stellarBurgers.pojo.Order;
-import stellarBurgers.pojo.UpdateUser;
-import stellarBurgers.pojo.User;
+import stellarburgers.pojo.Authorize;
+import stellarburgers.pojo.Order;
+import stellarburgers.pojo.UpdateUser;
+import stellarburgers.pojo.User;
 
 import static io.restassured.RestAssured.given;
 
 public class Methods {
 
-    private static final String createUserPath = "/api/auth/register";
-    private static final String loginUserPath = "/api/auth/login";
-    private static final String updateUserPath = "/api/auth/user";
-    private static final String createOrdersPath = "/api/orders";
-    private static final String getIngredientsPath = "/api/ingredients";
-    private static final String getOrdersPath = "/api/orders";
+    private static final String CREATE_USER_PATH = "/api/auth/register";
+    private static final String LOGIN_USER_PATH = "/api/auth/login";
+    private static final String UPDATE_USER_PATH = "/api/auth/user";
+    private static final String CREATE_ORDERS_PATH = "/api/orders";
+    private static final String GET_INGREDIENTS_PATH = "/api/ingredients";
+    private static final String GET_ORDERS_PATH = "/api/orders";
 
     @Step("Создать пользователя")
     public static ValidatableResponse postCreateUser(User user) {
@@ -26,7 +26,7 @@ public class Methods {
                 .when()
                 .body(user)
                 .log().all()
-                .post(createUserPath)
+                .post(CREATE_USER_PATH)
                 .then()
                 .log().all();
 
@@ -39,7 +39,7 @@ public class Methods {
                 .header("Authorization", accessToken)
                 .when()
                 .log().all()
-                .delete(updateUserPath)
+                .delete(UPDATE_USER_PATH)
                 .then()
                 .log().all();
 
@@ -53,7 +53,7 @@ public class Methods {
                 .when()
                 .body(auth)
                 .log().all()
-                .post(loginUserPath)
+                .post(LOGIN_USER_PATH)
                 .then()
                 .log().all();
 
@@ -68,7 +68,7 @@ public class Methods {
                 .when()
                 .body(updateUserData)
                 .log().all()
-                .patch(updateUserPath)
+                .patch(UPDATE_USER_PATH)
                 .then()
                 .log().all();
 
@@ -82,7 +82,7 @@ public class Methods {
                 .when()
                 .body(order)
                 .log().all()
-                .post(createOrdersPath)
+                .post(CREATE_ORDERS_PATH)
                 .then()
                 .log().all();
 
@@ -94,7 +94,7 @@ public class Methods {
                 .header("Content-type", "application/json")
                 .when()
                 .log().all()
-                .get(getIngredientsPath)
+                .get(GET_INGREDIENTS_PATH)
                 .then()
                 .log().all();
 
@@ -107,7 +107,7 @@ public class Methods {
                 .header("Authorization", token)
                 .when()
                 .log().all()
-                .get(getOrdersPath)
+                .get(GET_ORDERS_PATH)
                 .then()
                 .log().all();
 
